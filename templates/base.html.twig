@@ -7,6 +7,8 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cerulean/bootstrap.min.css" integrity="sha256-UWALBbCbbM649IZa/rYTILDmnfc+fXuZQQ2awYBChIs=" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cerulean/_variables.min.css" integrity="sha256-UWALBbCbbM649IZa/rYTILDmnfc+fXuZQQ2awYBChIs=" crossorigin="anonymous">
         {% endblock %}
 
         {% block javascripts %}
@@ -14,6 +16,12 @@
         {% endblock %}
     </head>
     <body>
+    {% block header %}
+        {% include "partials/_header.html.twig" %}
+    {% endblock %}
         {% block body %}{% endblock %}
+    {% block footer %}
+        {% include "partials/_footer.html.twig" %}
+    {% endblock %}
     </body>
 </html>
