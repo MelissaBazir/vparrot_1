@@ -29,8 +29,16 @@ class Review
     #[ORM\Column]
     private ?bool $approved = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type:'datetime_immutable')]
     private ?\DateTimeImmutable $createdAt = null;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable(); 
+    }
 
     public function getId(): ?int
     {
