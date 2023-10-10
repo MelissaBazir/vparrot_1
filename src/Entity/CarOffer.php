@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CarOffersRepository;
+use App\Repository\CarOfferRepository;
 use Doctrine\DBAL\Types\BlobType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CarOffersRepository::class)]
-class CarOffers
+#[ORM\Entity(repositoryClass: CarOfferRepository::class)]
+class CarOffer
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

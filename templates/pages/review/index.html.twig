@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V. PARROT - Témoignages{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+    {% if not reviews.items is same as([]) %}
+    
+        <h1>Liste des témoignages</h1>
+        {# total items count #}
+    <div class="count mt-4">
+        <h4>Il y a {{ reviews.getTotalItemCount }} avis actuellement</h4>
+    </div>
+        <table class="table table-hover mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Texte de l'avis</th>
+                    <th scope="col">Auteur</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            {% for review in reviews %}
+                <tr>
+                <th scope="row">{{review.id}}</th>
+                <td>{{review.reviewText}}</td>
+                <td>{{review.name}}</td>
+                <td>{{review.createdAt|date('d/m/Y')}}</td>
+                <td>
+                    <a href="">Approuver</a>
+                    <a href="">Supprimer</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+                
+            </tbody>
+        </table>
+        {# display navigation #}
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(reviews) }}
+        </div>
+    {% else %}
+        <h4>Il n'y a aucun avis actuellement</h4>
+    {% endif %}
+    </div>
+{% endblock %}

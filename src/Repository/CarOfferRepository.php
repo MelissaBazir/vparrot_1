@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\CarOffers;
+use App\Entity\CarOffer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<CarOffers>
+ * @extends ServiceEntityRepository<CarOffer>
  *
- * @method CarOffers|null find($id, $lockMode = null, $lockVersion = null)
- * @method CarOffers|null findOneBy(array $criteria, array $orderBy = null)
- * @method CarOffers[]    findAll()
- * @method CarOffers[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CarOffer|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CarOffer|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CarOffer[]    findAll()
+ * @method CarOffer[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CarOffersRepository extends ServiceEntityRepository
+class CarOfferRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CarOffers::class);
+        parent::__construct($registry, CarOffer::class);
     }
 
 //    /**
-//     * @return CarOffers[] Returns an array of CarOffers objects
+//     * @return CarOffer[] Returns an array of CarOffer objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class CarOffersRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?CarOffers
+//    public function findOneBySomeField($value): ?CarOffer
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
