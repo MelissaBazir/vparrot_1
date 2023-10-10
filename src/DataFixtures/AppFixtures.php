@@ -23,22 +23,22 @@ class AppFixtures extends Fixture
     }   
     public function load(ObjectManager $manager): void
     {
-        for ($i=1; $i <= 50 ; $i++) {
+        for ($i=1; $i <= 18 ; $i++) {
             $review = new Review();
             $review->setName($this->faker->name())
             ->setReviewText($this->faker->text())
             ->setScore(mt_rand(3, 4))
             ->setApproved(False);
 
-            // $carOffer = new CarOffers();
-            // $carOffer->setTitle($this->faker->word(4))
-            // ->setPrice($this->faker->randomNumber(5, true))
-            // ->setPhotos()
-            // ->setYear($this->faker->year())
-            // ->setMileage($this->faker->randomNumber(6);
+            $carOffer = new CarOffers();
+            $carOffer->setTitle($this->faker->words(4, true))
+            ->setPrice($this->faker->randomNumber(5, true))
+            ->setPhoto("https://picsum.photos/200/300")
+            ->setYear($this->faker->year())
+            ->setMileage($this->faker->randomNumber(6));
 
             $manager->persist($review);
-            //$manager->persist($carOffer);
+            $manager->persist($carOffer);
         }
         
         
