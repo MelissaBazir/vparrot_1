@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CarOffersRepository;
+use Doctrine\DBAL\Types\BlobType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,14 +18,14 @@ class CarOffers
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $year = null;
+    #[ORM\Column(length: 4)]
+    private ?string $year = null;
 
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $photos = [];
+    #[ORM\Column(type: Types::BLOB)]
+    private $photo = null;
 
     #[ORM\Column]
     private ?int $mileage = null;
@@ -32,6 +33,15 @@ class CarOffers
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -73,14 +83,14 @@ class CarOffers
         return $this;
     }
 
-    public function getPhotos(): array
+    public function getPhoto()
     {
-        return $this->photos;
+        return $this->photo;
     }
 
-    public function setPhotos(array $photos): static
+    public function setPhoto($photo): static
     {
-        $this->photos = $photos;
+        $this->photo = $photo;
 
         return $this;
     }
@@ -108,4 +118,6 @@ class CarOffers
 
         return $this;
     }
+
+    
 }

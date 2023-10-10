@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\CarOffers;
 use Faker\Generator;
 use Faker\Factory;
 use App\Entity\Review;
@@ -29,7 +30,15 @@ class AppFixtures extends Fixture
             ->setScore(mt_rand(3, 4))
             ->setApproved(False);
 
+            // $carOffer = new CarOffers();
+            // $carOffer->setTitle($this->faker->word(4))
+            // ->setPrice($this->faker->randomNumber(5, true))
+            // ->setPhotos()
+            // ->setYear($this->faker->year())
+            // ->setMileage($this->faker->randomNumber(6);
+
             $manager->persist($review);
+            //$manager->persist($carOffer);
         }
         
         
