@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Review;
+use App\Form\ReviewType;
 use App\Repository\ReviewRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +32,17 @@ class ReviewController extends AbstractController
         );
         return $this->render('pages/review/index.html.twig', [
             'reviews' => $reviews
+        ]);
+    }
+
+    #[Route('/review/new', 'review.new', methods: ['GET', 'POST'])]
+    public function new() : Response
+    {
+        $review = new Review();
+        $form = $this->createForm(ReviewType::class, $review);
+        
+        return $this->render('pages/review/new.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }
