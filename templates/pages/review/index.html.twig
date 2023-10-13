@@ -6,11 +6,15 @@
     <div class="container mt-4">
     {% if not reviews.items is same as([]) %}
     
-        <h1>Liste des témoignages</h1>
+        <h1>Liste des avis</h1>
+
         {# total items count #}
     <div class="count mt-4">
         <h4>Il y a {{ reviews.getTotalItemCount }} avis actuellement</h4>
     </div>
+
+        <a href="{{path('review.new')}}" class="btn btn-primary">Ajouter un nouvel avis</a>
+
         <table class="table table-hover mt-4">
             <thead>
                 <tr>

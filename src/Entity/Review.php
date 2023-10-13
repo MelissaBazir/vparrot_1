@@ -29,7 +29,7 @@ class Review
     #[ORM\Column]
     private ?bool $approved = null;
 
-    #[ORM\Column(type:'datetime_immutable')]
+    #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
@@ -37,7 +37,10 @@ class Review
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTimeImmutable(); 
+        $this->createdAt = new \DateTimeImmutable();
+
+        // to set default value to false
+        $this->approved = false;
     }
 
     public function getId(): ?int
