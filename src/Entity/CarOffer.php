@@ -6,6 +6,7 @@ use App\Repository\CarOfferRepository;
 use Doctrine\DBAL\Types\BlobType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CarOfferRepository::class)]
 class CarOffer
@@ -19,6 +20,11 @@ class CarOffer
     private ?string $title = null;
 
     #[ORM\Column(length: 4)]
+    #[Assert\Regex(
+        pattern: '^(19|20)\d{2}$',
+        match: true,
+        message: 'Cette année n\'est pas valide, veuillez entrer une année sur 4 chiffres'
+    )]
     private ?string $year = null;
 
     #[ORM\Column]

@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\CarOffer;
-use Faker\Generator;
 use Faker\Factory;
+use Faker\Generator;
 use App\Entity\Review;
+use App\Entity\Service;
+use App\Entity\CarOffer;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -37,8 +38,15 @@ class AppFixtures extends Fixture
             ->setYear($this->faker->year())
             ->setMileage($this->faker->randomNumber(6));
 
+            $service = new Service();
+            $service->setTitle($this->faker->words(20, true))
+            ->setDescription($this->faker->text());
+            
+            
+
             $manager->persist($review);
             $manager->persist($carOffer);
+            $manager->persist($service);
         }
         
         
