@@ -2,27 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Review;
+use App\Entity\Image;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class Review1Type extends AbstractType
+class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('reviewText')
-            ->add('score')
-            ->add('isApproved')
-            //->add('createdAt')
+            ->add('file_name')
+            ->add('isMain')
+            ->add('carOffer')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Review::class,
+            'data_class' => Image::class,
         ]);
     }
 }
