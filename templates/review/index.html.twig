@@ -3,20 +3,23 @@
 {% block title %}Review index{% endblock %}
 
 {% block body %}
-    <h1>Review index</h1>
+    <h1>Liste des avis</h1>
+    <h4><div class="count">
+    Il y a actuellement {{ reviews.getTotalItemCount }} avis
+    </div></h4>
 
-    <a href="{{ path('app_review_new') }}">Create new</a>
+    <a href="{{ path('app_review_new') }}">Ajouter un nouvel avis</a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>ReviewText</th>
-                <th>Score</th>
-                <th>Approved</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Avis</th>
+                <th>Note</th>
+                <th>Approuvé</th>
+                <th>Date de création</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -26,16 +29,16 @@
                 <td>{{ review.name }}</td>
                 <td>{{ review.reviewText }}</td>
                 <td>{{ review.score }}</td>
-                <td>{{ review.approved ? 'Yes' : 'No' }}</td>
+                <td>{{ review.approved ? 'Oui' : 'Non' }}</td>
                 <td>{{ review.createdAt ? review.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_review_show', {'id': review.id}) }}">show</a>
-                    <a href="{{ path('app_review_edit', {'id': review.id}) }}">edit</a>
+                    <a href="{{ path('app_review_show', {'id': review.id}) }}">Détails</a>
+                    <a href="{{ path('app_review_edit', {'id': review.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucun avis enregistré pour le moment</td>
             </tr>
         {% endfor %}
         </tbody>

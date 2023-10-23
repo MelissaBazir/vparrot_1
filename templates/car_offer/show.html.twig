@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarOffer{% endblock %}
+
+{% block body %}
+    <h1>CarOffer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ car_offer.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ car_offer.title }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ car_offer.year }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ car_offer.price }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ car_offer.photo }}</td>
+            </tr>
+            <tr>
+                <th>Mileage</th>
+                <td>{{ car_offer.mileage }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ car_offer.createdAt ? car_offer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_car_offer_index') }}">back to list</a>
+
+    <a href="{{ path('app_car_offer_edit', {'id': car_offer.id}) }}">edit</a>
+
+    {{ include('car_offer/_delete_form.html.twig') }}
+{% endblock %}

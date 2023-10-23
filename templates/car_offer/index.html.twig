@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarOffer index{% endblock %}
+
+{% block body %}
+    <h1>Liste des annonces de voitures</h1>
+    <h4><div class="count">
+    Il y a actuellement {{ car_offers.getTotalItemCount }} annonces de voitures
+    </div></h4>
+    <a href="{{ path('app_car_offer_new') }}">Create new</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th>Année de mise en circulation</th>
+                <th>Prix</th>
+                <th>Photo</th>
+                <th>Kilométrage</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car_offer in car_offers %}
+            <tr>
+                <td>{{ car_offer.id }}</td>
+                <td>{{ car_offer.title }}</td>
+                <td>{{ car_offer.year }}</td>
+                <td>{{ car_offer.price }}</td>
+                <td>{{ car_offer.photo }}</td>
+                <td>{{ car_offer.mileage }}</td>
+                <td>{{ car_offer.createdAt ? car_offer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_car_offer_show', {'id': car_offer.id}) }}">Détails</a>
+                    <a href="{{ path('app_car_offer_edit', {'id': car_offer.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucune annonce présente pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation d-flex justify-content-center">
+        {{ knp_pagination_render(car_offers) }}
+    </div>
+
+{% endblock %}

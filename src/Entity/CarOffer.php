@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CarOfferRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\BlobType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,24 +23,22 @@ class CarOffer
 
     #[ORM\Column(length: 4)]
     #[Assert\Regex(
-        pattern: '^(19|20)\d{2}$',
+        pattern: '^(19|20)\d{2}$^',
         match: true,
-        message: 'Cette année n\'est pas valide, veuillez entrer une année sur 4 chiffres'
+        message: 'Cette année n\'est pas valide. Veuillez entrer une année sur 4 chiffres'
     )]
     private ?string $year = null;
 
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\Column(type: Types::BLOB)]
-    private $photo = null;
+
 
     #[ORM\Column]
     private ?int $mileage = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
-
     
 
     /**
@@ -89,17 +89,6 @@ class CarOffer
         return $this;
     }
 
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto($photo): static
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
 
     public function getMileage(): ?int
     {

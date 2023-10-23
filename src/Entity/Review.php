@@ -15,8 +15,6 @@ class Review
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 32)]
-    private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $reviewText = null;
@@ -26,38 +24,24 @@ class Review
     #[Assert\GreaterThan(0)]
     private ?int $score = null;
 
-    #[ORM\Column]
-    private ?bool $approved = null;
+    // to set default value to false
+    #[ORM\Column(options: ['default' => false])]
+    private ?bool $isApproved = null;
 
-    #[ORM\Column(type: 'datetime_immutable')]
+    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->createdAt = new \DateTimeImmutable();
-
-        // to set default value to false
-        $this->approved = false;
-    }
+    // public function __construct()
+    // {
+    //     $this->createdAt = new \DateTimeImmutable();
+    // }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getReviewText(): ?string
@@ -84,14 +68,14 @@ class Review
         return $this;
     }
 
-    public function isApproved(): ?bool
+    public function isIsApproved(): ?bool
     {
-        return $this->approved;
+        return $this->isApproved;
     }
 
-    public function setApproved(bool $approved): static
+    public function setIsApproved(bool $isApproved): static
     {
-        $this->approved = $approved;
+        $this->isApproved = $isApproved;
 
         return $this;
     }

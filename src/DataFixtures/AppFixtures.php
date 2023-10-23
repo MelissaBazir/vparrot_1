@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Image;
 use Faker\Factory;
 use Faker\Generator;
 use App\Entity\Review;
@@ -26,15 +27,14 @@ class AppFixtures extends Fixture
     {
         for ($i=1; $i <= 18 ; $i++) {
             $review = new Review();
-            $review->setName($this->faker->name())
-            ->setReviewText($this->faker->text())
+            $review->setReviewText($this->faker->text())
             ->setScore(mt_rand(3, 4))
-            ->setApproved(False);
+            ->setIsApproved(False);
 
             $carOffer = new CarOffer();
             $carOffer->setTitle($this->faker->words(4, true))
             ->setPrice($this->faker->randomNumber(5, true))
-            ->setPhoto("https://picsum.photos/200/300")
+            
             ->setYear($this->faker->year())
             ->setMileage($this->faker->randomNumber(6));
 
@@ -42,11 +42,15 @@ class AppFixtures extends Fixture
             $service->setTitle($this->faker->words(20, true))
             ->setDescription($this->faker->text());
             
+            $image = new Image();
+            $image->setFileName("https://picsum.photos/200/300");
+            $image->setIsMain($this->faker->boolean());
             
 
             $manager->persist($review);
             $manager->persist($carOffer);
             $manager->persist($service);
+            $manager->persist($image);
         }
         
         
