@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Open{% endblock %}
+
+{% block body %}
+    <h1>Open</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ open.id }}</td>
+            </tr>
+            <tr>
+                <th>Day</th>
+                <td>{{ open.day }}</td>
+            </tr>
+            <tr>
+                <th>AmOpening</th>
+                <td>{{ open.amOpening }}</td>
+            </tr>
+            <tr>
+                <th>AmClosure</th>
+                <td>{{ open.amClosure }}</td>
+            </tr>
+            <tr>
+                <th>PmOpening</th>
+                <td>{{ open.pmOpening }}</td>
+            </tr>
+            <tr>
+                <th>PmClosure</th>
+                <td>{{ open.pmClosure }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_open_index') }}">back to list</a>
+
+    <a href="{{ path('app_open_edit', {'id': open.id}) }}">edit</a>
+
+    {{ include('open/_delete_form.html.twig') }}
+{% endblock %}

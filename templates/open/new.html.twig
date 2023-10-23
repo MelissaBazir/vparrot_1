@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Open{% endblock %}
+
+{% block body %}
+    <h1>Create new Open</h1>
+
+    {{ include('open/_form.html.twig') }}
+
+    <a href="{{ path('app_open_index') }}">back to list</a>
+{% endblock %}
